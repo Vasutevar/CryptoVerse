@@ -6,7 +6,7 @@ import { cryptoNewsApi} from '../services/cryptoNewsApi';
 
 export default configureStore({
     reducer: {
-        [cryptoApi.reducerPath]: cryptoApi.reducer,  //connects the api in cryptoApi and gets every sate update
+        [cryptoApi.reducerPath]: cryptoApi.reducer,  //connects the api in cryptoApi and gets every state update
         [cryptoNewsApi.reducerPath]: cryptoNewsApi.reducer,
     },
     middleware: (getDefaultMiddleware) => 

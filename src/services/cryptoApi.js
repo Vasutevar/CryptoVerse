@@ -1,8 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const cryptoApiHeaders = {
-    'x-rapidapi-host': 'coinranking1.p.rapidapi.com',
-    'x-rapidapi-key': 'ac29500ddemshc3f87e2b7a795c0p1afc75jsn12bb951a5386'
+    'X-RapidAPI-Key': 'ac29500ddemshc3f87e2b7a795c0p1afc75jsn12bb951a5386',
+    'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
 
 }
 
@@ -18,15 +18,12 @@ export const cryptoApi = createApi({
             query: (count) => createRequest(`/coins?limit=${count}`),          // we will get all the exchanges
         }),
         getCryptoDetails: builder.query({
-            query: (coinId) => createRequest(`/coin?/${coinId}`)
+            query: (coinId) => createRequest(`/coin/${coinId}`),
         }),
-        getExchanges: builder.query({
-            query: () => createRequest('/exchanges'),
-        }),
+
         getCryptoHistory: builder.query({
-            query: ({ coinId, timeperiod }) => createRequest(`coin/${coinId}/history?timeperiod=${timeperiod}`),
-          }),
-      
+            query: ({ coinId, timeperiod  }) => createRequest(`coin/${coinId}/history?timeperiod=${timeperiod }`),
+        }),
         //   // Note: To access this endpoint you need premium plan
         //   getExchanges: builder.query({
         //     query: () => createRequest('/exchanges'),
@@ -36,4 +33,5 @@ export const cryptoApi = createApi({
 });
 
 //hook to get all data for the query
-export const { useGetCryptosQuery, useGetCryptoDetailsQuery , useGetExchangesQuery ,  useGetCryptoHistoryQuery, } = cryptoApi;
+export const { useGetCryptosQuery, useGetCryptoDetailsQuery,  useGetCryptoHistoryQuery,
+} = cryptoApi;

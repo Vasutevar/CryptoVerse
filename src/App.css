@@ -63,7 +63,8 @@ a:hover{
     right: 10px !important;
     top: 25px !important;
     font-size: 1.2rem !important;
-    background-color: var(--bgSecondary) !important;
+    background-color: rgb(0,21,41) !important;
+    color: white !important;
     border: none !important;
 }
 
