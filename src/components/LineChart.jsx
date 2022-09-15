@@ -2,7 +2,7 @@ import React from 'react';
 import { Line } from 'react-chartjs-2';
 import { Col, Row, Typography } from 'antd';
 import { Chart , LineController, LineElement, PointElement, LinearScale, CategoryScale } from 'chart.js';
-
+import moment from 'moment'
 Chart.register(LineController, LineElement, PointElement, LinearScale, CategoryScale);
 
 
@@ -14,20 +14,17 @@ const LineChart =  ({ coinHistory, coinName, currentPrice }) => {
   const coinTimestamp = [];
 
   //looping till end of coinHistory
-  for (let i = 0; i < coinHistory?.data?.history?.length; i += 1) {
+  for (let i = 0; i < coinHistory?.data?.history?.length; i += 25) {
     // console.log(coinHistory?.data?.history[i].price);
      coinPrice.push(coinHistory?.data?.history[i].price);
   }
  
   
 
-  for (let i = 0; i < coinHistory?.data?.history?.length; i+= 1) {
+  for (let i = 0; i < coinHistory?.data?.history?.length; i+= 25) {
     // console.log(coinHistory?.data?.history[i].timestamp);
-    coinTimestamp.push(new Date( coinHistory?.data?.history[i].timestamp).toLocaleDateString());
+    coinTimestamp.push(moment.unix(coinHistory.data.history[i].timestamp).format('ll'));
   }
-  
-  
-
 
   const data = {
     labels: coinTimestamp,
